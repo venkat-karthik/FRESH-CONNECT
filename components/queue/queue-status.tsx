@@ -97,7 +97,7 @@ export function QueueStatus() {
             newTokens = queue.tokens
               .slice(1)
               .map((token, idx) =>
-                idx === 0 ? { ...token, status: "serving" } : { ...token, position: token.position - 1 },
+                idx === 0 ? { ...token, status: "serving" } : { ...token, position: (token.position || 0) - 1 },
               )
           }
 

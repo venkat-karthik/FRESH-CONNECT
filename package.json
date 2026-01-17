@@ -1,12 +1,19 @@
 {
-  "name": "my-v0-project",
+  "name": "freshserve-connect",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "type-check": "tsc --noEmit",
+    "build:analyze": "ANALYZE=true npm run build",
+    "export": "next build && next export",
+    "deploy": "./deploy.sh",
+    "docker:build": "docker build -t freshserve-connect .",
+    "docker:run": "docker run -p 3000:3000 freshserve-connect",
+    "clean": "rm -rf .next out node_modules/.cache"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
@@ -66,6 +73,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",

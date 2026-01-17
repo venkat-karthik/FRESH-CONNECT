@@ -6,7 +6,17 @@ import { Calendar } from "@/components/ui/calendar"
 import { useState } from "react"
 
 // Sample crop data
-const cropData = {
+type CropEvent = {
+  name: string
+  action: string
+  variant: "default" | "success" | "outline"
+}
+
+type CropData = {
+  [key: string]: CropEvent[]
+}
+
+const cropData: CropData = {
   "2023-05-01": [
     { name: "Tomatoes", action: "Planting", variant: "default" },
     { name: "Carrots", action: "Harvesting", variant: "success" },
@@ -65,7 +75,7 @@ export function CropCalendar() {
                     <h3 className="font-medium">{event.name}</h3>
                     <p className="text-sm text-muted-foreground">{event.action}</p>
                   </div>
-                  <Badge variant={event.variant as any}>{event.action}</Badge>
+                  <Badge variant={event.variant}>{event.action}</Badge>
                 </div>
               ))}
             </div>
